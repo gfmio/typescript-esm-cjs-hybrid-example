@@ -46,10 +46,9 @@ From the main project [`package.json`](./package.json):
 
 ```json
 {
-  scripts: {
+  "scripts": {
     "build:mjs": "tsc --rootDir src --outDir build/mjs --moduleResolution node --allowSyntheticDefaultImports --module esnext src/*.ts && mv build/mjs/index.js build/mjs/index.mjs",
     "build:cjs": "tsc --rootDir src --outDir build/cjs --moduleResolution node --esModuleInterop src/*.ts",
-    // ...
   }
 }
 ```
@@ -111,8 +110,7 @@ From the main project [`package.json`](./package.json):
 
 ```json
 {
-  scripts: {
-    // ...
+  "scripts": {
     "start:mjs": "npm run build:mjs && node --experimental-modules build/mjs/index.mjs",
     "start:cjs": "npm run build:cjs && node build/cjs/index.js"
   }
