@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "declaration": true
+  },
+  "files": [
+    "./src/hybrid.ts"
+  ]
+}

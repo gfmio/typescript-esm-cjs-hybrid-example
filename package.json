@@ -1,0 +1,29 @@
+{
+  "name": "typescript-esm-cjs-hybrid-example",
+  "version": "1.0.0",
+  "author": "Frédérique Mittelstaedt <me@gfm.io> (https://www.gfm.io)",
+  "license": "MIT",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gfmio/typescript-esm-cjs-hybrid-example"
+  },
+  "keywords": [
+    "typescript",
+    "esm",
+    "hybrid",
+    "module",
+    "example"
+  ],
+  "scripts": {
+    "build:mjs": "tsc --rootDir src --outDir build/mjs --moduleResolution node --allowSyntheticDefaultImports --module esnext src/*.ts && mv build/mjs/index.js build/mjs/index.mjs",
+    "build:cjs": "tsc --rootDir src --outDir build/cjs --moduleResolution node --esModuleInterop src/*.ts",
+    "start:mjs": "npm run build:mjs && node --experimental-modules build/mjs/index.mjs",
+    "start:cjs": "npm run build:cjs && node build/cjs/index.js"
+  },
+  "devDependencies": {
+    "@types/node": "^10.3.2",
+    "hybrid": "file://./hybrid",
+    "typescript": "^2.9.1"
+  }
+}

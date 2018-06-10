@@ -1,0 +1,34 @@
+{
+  "name": "hybrid",
+  "description": "Hybrid package",
+  "version": "1.0.0",
+  "author": "Frédérique Mittelstaedt <me@gfm.io> (https://www.gfm.io)",
+  "license": "MIT",
+  "private": true,
+  "main": "./dist/hybrid",
+  "types": "./dist/hybrid.d.ts",
+  "browser": "./dist/hybrid.js",
+  "module": "./dist/hybrid.mjs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gfmio/typescript-esm-cjs-hybrid-example"
+  },
+  "keywords": [
+    "typescript",
+    "esm",
+    "hybrid",
+    "module",
+    "example"
+  ],
+  "scripts": {
+    "build:mjs": "tsc --allowSyntheticDefaultImports --module esnext && npm run move-esm-output && npm run process-source-maps",
+    "move-esm-output": "mv dist/hybrid.js dist/hybrid.mjs && mv dist/say-hello.js dist/say-hello.mjs",
+    "process-source-maps": "sed -e \"s/hybrid.js/hybrid.mjs/g\" ./dist/hybrid.js.map > ./dist/hybrid.mjs.map && sed -e \"s/say-hello.js/say-hello.mjs/g\" ./dist/say-hello.js.map > ./dist/say-hello.mjs.map",
+    "build:cjs": "tsc --esModuleInterop",
+    "build": "npm run build:mjs && npm run build:cjs"
+  },
+  "devDependencies": {
+    "@types/node": "^10.3.2",
+    "typescript": "^2.9.1"
+  }
+}
